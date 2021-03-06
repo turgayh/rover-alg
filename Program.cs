@@ -80,9 +80,12 @@ namespace rover_alg
                 var readRoverInfo = Console.ReadLine();
                 if (readRoverInfo == null)
                     break;
-
                 var roverInfo = readRoverInfo.Split(" ");
-                var commands = Console.ReadLine().ToCharArray();
+
+                var readCommands = Console.ReadLine();
+                if (readCommands == null)
+                    break;
+                var commands = readCommands.ToCharArray();
 
                 if (roverInfo != null && commands != null)
                 {
