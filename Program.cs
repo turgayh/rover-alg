@@ -9,50 +9,45 @@ namespace rover_alg
         {
             North = 'N',
             South = 'S',
-            West  = 'W',
-            East  = 'E'
+            West = 'W',
+            East = 'E'
         }
 
-        public enum commandDirection
+        public enum CommandDirection
         {
             Left = 0,
             Right = 1
         }
 
-        class Rover:Vehicle
+        class Rover : Vehicle
         {
-            public Rover(int x, int y , char direction)
-            {
-                this.x = x;
-                this.y = y;
-                this.direction = direction;
-            } 
+
             public override void Move()
             {
-                switch(this.direction)
+                switch (Direction)
                 {
-                    case (char)Direction.North:
-                        this.y += 1;
+                    case (char)Program.Direction.North:
+                        Y += 1;
                         break;
-                    case (char)Direction.South:
-                        this.y -= 1;
-                        break; 
-                    case (char)Direction.East:
-                        this.x += 1;
+                    case (char)Program.Direction.South:
+                        Y -= 1;
                         break;
-                    case (char)Direction.West:
-                        this.x -= 1;
+                    case (char)Program.Direction.East:
+                        X += 1;
+                        break;
+                    case (char)Program.Direction.West:
+                        X -= 1;
                         break;
                     default:
-                       break; 
+                        break;
                 }
             }
 
         }
 
-        public static char[] removeRepeatedSteps(char[] commands)
+        public static char[] RemoveRepeatedSteps(char[] commands)
         {
-            List<string> repeatedCommandList = new List<string>() {"LLLL","RRRR","LMLMLMLM","RMRMRMRM" };
+            List<string> repeatedCommandList = new List<string>() { "LLLL", "RRRR", "LMLMLMLM", "RMRMRMRM" };
             string tempCommand = new string(commands);
             foreach (var item in repeatedCommandList)
             {
@@ -71,39 +66,45 @@ namespace rover_alg
             // initial N  > command L =>  newDirection = findNewDirection['N'][0]
             // initial N  > command R =>  newDirection = findNewDirection['N'][1]
 
-            findNewDirection.Add('N', new char[2] { (char)Direction.West, (char)Direction.East});
+            findNewDirection.Add('N', new char[2] { (char)Direction.West, (char)Direction.East });
             findNewDirection.Add('W', new char[2] { (char)Direction.South, (char)Direction.North });
             findNewDirection.Add('S', new char[2] { (char)Direction.East, (char)Direction.West });
             findNewDirection.Add('E', new char[2] { (char)Direction.North, (char)Direction.South });
 
 
-            var upperRightCoordinates = Console.ReadLine().Split(" ");
-            Rover rover = new Rover(0,0,'N') ;
+            string[] upperRightCoordinates = Console.ReadLine().Split(" ");
+            Rover rover = new Rover();
 
             while (true)
             {
-                var roverInfo = Console.ReadLine().Split(" ");
+                var readRoverInfo = Console.ReadLine();
+                if (readRoverInfo == null)
+                    break;
+
+                var roverInfo = readRoverInfo.Split(" ");
                 var commands = Console.ReadLine().ToCharArray();
+
                 if (roverInfo != null && commands != null)
                 {
-                    rover.x = Int32.Parse(roverInfo[0]);
-                    rover.y = Int32.Parse(roverInfo[1]);
-                    rover.direction = Char.Parse(roverInfo[2]);
+                    rover.X = int.Parse(roverInfo[0]);
+                    rover.Y = int.Parse(roverInfo[1]);
+                    rover.Direction = char.Parse(roverInfo[2]);
 
-                    commands = removeRepeatedSteps(commands);
+                    commands = RemoveRepeatedSteps(commands);
 
-                    foreach (var command in commands)
+                    foreach (char command in commands)
                     {
                         if (command == 'M')
                             rover.Move();
                         else if (command == 'L')
-                            rover.direction = findNewDirection[rover.direction][(int)commandDirection.Left];
+                            rover.Direction = findNewDirection[rover.Direction][(int)CommandDirection.Left];
                         else if (command == 'R')
-                            rover.direction = findNewDirection[rover.direction][(int)commandDirection.Right];
+                            rover.Direction = findNewDirection[rover.Direction][(int)CommandDirection.Right];
                     }
 
 
-                    Console.WriteLine("{0} {1} {2}", rover.x, rover.y, rover.direction);
+                    Console.WriteLine("{0} {1} {2}", rover.X, rover.Y, rover.Direction);
+                    
                 }
                 else
                     break;
