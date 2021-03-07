@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.809.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rover-alg", "rover-alg.csproj", "{07AB03FB-7AFC-41D2-8F3E-3BE8E888887B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rover-alg", "rover-alg.csproj", "{07AB03FB-7AFC-41D2-8F3E-3BE8E888887B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D87AF935-A7C1-4786-981B-0869B22C4CEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rover-alg.unittest", "tests\rover-alg.unittest\rover-alg.unittest.csproj", "{490E799D-EE06-4337-8A8E-83FA7FEDE2B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{07AB03FB-7AFC-41D2-8F3E-3BE8E888887B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07AB03FB-7AFC-41D2-8F3E-3BE8E888887B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07AB03FB-7AFC-41D2-8F3E-3BE8E888887B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{490E799D-EE06-4337-8A8E-83FA7FEDE2B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490E799D-EE06-4337-8A8E-83FA7FEDE2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490E799D-EE06-4337-8A8E-83FA7FEDE2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490E799D-EE06-4337-8A8E-83FA7FEDE2B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{490E799D-EE06-4337-8A8E-83FA7FEDE2B0} = {D87AF935-A7C1-4786-981B-0869B22C4CEE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C59F0E0-8553-459A-88C9-43F009B908FB}
